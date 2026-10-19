@@ -1,0 +1,19 @@
+Phần 1: 4 tham số VLOOKUP trong bài
+lookup_value: Ô chứa mã linh kiện ở sheet Don_Hang (VD: A2, nên bọc thêm TRIM(A2) để dọn khoảng trắng thừa)
+table_array: Vùng bảng bên sheet Danh_Muc (VD: Danh_Muc!A2:C101). Bắt buộc phải có dấu $ để cố định bảng, không bị lệch khi kéo công thức
+col_index_num: Số cột lấy dữ liệu tính từ cột mã linh kiện sang phải (Cột 2 lấy Tên, Cột 3 lấy Đơn giá)
+range_lookup: Điền 0 (hoặc FALSE) để tìm chính xác tuyệt đối mã linh kiện
+
+
+
+Phần 2: Công thức hoàn chỉnh
+
+Lấy Tên linh kiện:
+Excel
+=IFERROR(VLOOKUP(TRIM(A2), Danh_Muc!A2:C101, 2, FALSE), "Không tìm thấy")
+
+Lấy Đơn giá:
+Excel
+=IFERROR(VLOOKUP(TRIM(A2), Danh_Muc!A2:C101, 3, FALSE), 0)
+
+
